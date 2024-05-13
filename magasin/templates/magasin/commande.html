@@ -29,6 +29,8 @@
                                     <h5 class="card-title">Commande du {{ commande.dateCde }}</h5>
                                 </div>
                                 <div class="card-body">
+
+                                    
                                     <p class="card-text">Total: {{ commande.calculer_total }}</p>
                                     <ul class="list-group">
                                         {% for produit in commande.produits.all %}
