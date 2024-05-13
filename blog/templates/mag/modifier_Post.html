@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier le Post: {{ Post.libelle }}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">Modifier le Post: {{ Post.libelle }}</h1>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <strong><label for="id_title">Titre:</label></strong>
+                                {{ form.title }}
+                            </div>
+                            <div class="form-group">
+                                <strong><label for="id_slug">Slug:</label></strong>
+                                {{ form.slug }}
+                            </div>
+                            <div class="form-group">
+                                <strong><label for="id_author">Auteur:</label></strong>
+                                {{ form.author }}
+                            </div>
+                            <div class="form-group">
+                                <strong><label for="id_content">Contenu:</label></strong>
+                                {{ form.content }}
+                            </div>
+                            <div class="form-group">
+                                <strong><label for="id_status">Statut:</label></strong>
+                                {{ form.status }}
+                            </div>
+                            <div class="form-group">
+                                <strong><label for="id_image">Image:</label></strong>
+                                {{ form.image }}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Modifier</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

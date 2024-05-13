@@ -1,0 +1,29 @@
+{% extends 'magasin/base.html' %}
+
+{% block title %}Liste des Posts{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5 mb-4">Liste des Posts</h1>
+    <form action="{% url 'creer_Post' %}" method="get" class="mb-4">
+        <button type="submit" class="btn btn-primary">Poster</button>
+    </form>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for post in Post %}
+            <div class="col">
+                <div class="card">
+                    <img src="/media/{{ post.image }}" class="card-img-top" width="250px" height="250px"alt="Image du Post">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">Auteur: {{ post.author }}</p>
+                        <p class="card-text">Date de publication: {{ post.updated_on }}</p>
+                        <form action="{% url 'detail_Post' post.pk %}" method="get">
+                            <button type="submit" class="btn btn-primary">Détails</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

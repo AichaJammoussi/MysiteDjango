@@ -1,0 +1,45 @@
+{% extends 'magasin/base.html' %}
+
+{% block title %}Créer un Post{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Créer un Post</h1>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Titre</label>
+                            {{ form.title }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="slug" class="form-label">Slug</label>
+                            {{ form.slug }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="author" class="form-label">Auteur</label>
+                            {{ form.author }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Contenu</label>
+                            {{ form.content }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Statut</label>
+                            {{ form.status }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            {{ form.image }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Publier</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

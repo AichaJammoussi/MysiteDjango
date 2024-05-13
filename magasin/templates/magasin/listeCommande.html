@@ -1,0 +1,27 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Liste des commandes</h3>
+            <ul class="list-group">
+                {% for commande in commandes %}
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h5>Date commande: {{ commande.dateCde }}</h5>
+                                <p>Produits :</p>
+                                <ul>
+                                    {% for produit in commande.produits.all %}
+                                    <li>{{ produit.libelle }} - {{ produit.description }}</li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5>Total : {{ commande.totalCde }}</h5>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+{% extends 'magasin/base.html' %}
+
+{% block title %}
+Détails du Post
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Détails du Post</h1>
+    <div class="jumbotron mt-3">
+        <h1 class="display-4"><strong>{{ Post.title }}</strong></h1>
+        <p class="lead"><strong>Contenu:</strong></p>
+        <p>{{ Post.content }}</p>
+        <img src="/media/{{ Post.image }}" class="img-fluid" alt="Image du Post">
+        <hr class="my-4">
+        <p><strong>Date de publication:</strong> {{ Post.updated_on }}</p>
+        <p><strong>Auteur:</strong> {{ Post.author }}</p>
+        {% if user.is_authenticated %}
+            {% if user == Post.author %}
+                <a href="{% url 'modifier_Post' Post.pk %}" class="btn btn-primary mr-2">Modifier</a>
+            {% endif %}
+            {% if user.is_superuser %}
+                <a href="{% url 'supprimer_Post' Post.pk %}" class="btn btn-danger">Supprimer</a>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

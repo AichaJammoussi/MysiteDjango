@@ -1,0 +1,40 @@
+{% extends 'magasin/base.html' %}
+{% block content %}
+<style>
+    .form-container {
+        border: 2px solid rgb(6, 93, 159); 
+        padding: 20px; 
+        border-radius: 10px; 
+        margin: 100px auto;
+                max-width: 400px; 
+    }
+
+    form {
+        color: rgb(24, 126, 181); 
+    }
+</style>
+<div class="form-container">
+    <h2>S'inscrire</h2> 
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {% for field in form %}
+            <tr>
+                <td>{{ field.label_tag }}</td>
+                <td>{{ field }}</td>
+            </tr>
+            {% for error in field.errors %}
+            <tr>
+                <td></td>
+                <td class="alert alert-danger">{{ error }}</td>
+            </tr>
+            {% endfor %}
+            {% endfor %}
+        </table>
+        <button type="submit">S'inscrire</button> 
+    </form>
+    <div>
+        <small>Déjà inscrit.e? <a href="{% url 'login' %}">Se connecter</a></small>
+    </div>
+</div>
+{% endblock %}
